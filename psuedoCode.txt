@@ -1,0 +1,113 @@
+HTML 
+Create a container. this will be the chest board 
+
+CSS 
+elements that will need to covered 
+	chessboard 
+	board pieces 
+
+SCRIPT 
+create a chessboard class
+	properties: 
+		container is assigned to html element 
+		board is assigned to an empty 
+	run the createBoard function 
+
+create a createBoard function() { 
+	for every row create a column up to 7 rows and columns 	
+	give colors to the squares every other is the same color 
+	(sum of row and column modular by 2) if true then do color red if false do color manilla 
+	
+	assign id to the square 
+	append the square to chessboard
+	
+	store square in the board array 
+	 
+	
+}
+
+create a knight class
+	properties is knight MOVES
+		an array of arrays  
+		[up 2 right 1]
+		[up 1 right 2]
+		[up 2 left 1]
+		[up 1 left 2]
+		[down 2 right 1]
+		[down 1 right 2]
+		[down 2 left 1]
+		[down 1 left 2]
+
+createa function to find if the location is valid 
+ isValid(x,y) 
+	create a variable called boardLimit
+	check if x and y are greater than or equal to 0 and if they are less than the limit of the board 
+	return true 
+	else 
+           log an error message and then return false 
+
+create a function to find the shortestpath to get to the desire spot
+ shortestPath(currentPosition , destination){
+	check if both currentPosition and destination are valid locations if false then return
+
+	create a fastPath variable 
+
+	create dfs var and assign it to the following function: constructors will be currentLo and path 
+		if the currentLo first element is equal to the wantedPosition's first element or currentLo 2nd element is equal to the wantedPosition's second element then
+	check if the fastPath is null or if the path is less than fastPath 
+		if true then copy path into the fastPath creating a new fastPath 
+
+	check if we already have a fastPath and if path is greater than or equal to bestpath. if so stop searching (return)
+
+try all moves possible 
+ 	for the degree x(dx) and y(dy) of the knights moves 
+		create nextPost an array that takes in the new current[0] + dx , current[1] + dy this assigning the new coordinates 
+
+		check if the next pos valid and !if path has the the same coordinates as next pos does if true 
+			add nextPos to the path 
+			run the dfs function taking in the nextPos and path 
+			push out the last position from path 
+	
+start seach from current positon with the initial path containly only the start
+
+return fastPath 
+
+
+create a function that marks the squares that were visited
+	visitedSquares(path) { 
+	create a variable to track the amount of steps taken = squaresVisisted 
+	
+	for each space in path 
+		create variable "space" assign it to the elementbyID x and y of position 
+		for space textContent assign it to the sqauresvisited 
+		remove the white or black color and replace it with green and whatever other css you have for it 
+
+}
+
+create a function to retrieve valid coordinates  
+getCoords(input) 
+
+check if the input is an integer if not throw a error 
+split the input using a delimiter "/" 
+if the coors do not equal 2 throw an error 
+
+create variables for the x and y coordinate, convert those to numbers and trim whitespace use the radix of 10 
+valid that both x and y are numbers if not throw a error 
+
+return x and y 
+
+
+create an event listener manipulating the dom 
+get chessboard
+get knight 
+get your starting coordinates prompting the screen
+get ending cords prompting the screen 
+assign your knight's shortest path as your path 
+
+if the path is true then 
+	log the results of how many moves were made 
+	for each position in path log the position 
+	call your visitedsqaure function the path 
+	
+else call a error 
+
