@@ -4,8 +4,9 @@ Create a container. this will be the chest board
 CSS 
 elements that will need to covered 
 	chessboard 
+		create chessboard classlist 
 	board pieces 
-
+		create board pieces classlists 
 SCRIPT 
 create a chessboard class
 	properties: 
