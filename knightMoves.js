@@ -30,9 +30,24 @@ class ChessBoard{
     }
 }
 
-document.addEventListener("DOMContentLoaded" , () => {
-    const testCB = new ChessBoard("#container"); 
-    console.log(testCB);
-})
+class Knight{ 
+    constructor() {
+        this.moves = [
+            [2 , 1], 
+            [1 , 2],
+            [2 , -1],
+            [1 , -2],
+            [-2 , 1],
+            [-1 , 2],
+            [-2 , -1],
+            [-1 , -2]
+        ]
+    }
+}
 
-console.log("script is loading");
+// document.addEventListener("DOMContentLoaded" , () => {
+//     const testCB = new ChessBoard("#container"); 
+//     console.log(testCB);
+// })
+
+// console.log("script is loading");
