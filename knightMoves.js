@@ -1,5 +1,5 @@
-class ChessBoard{ 
-    constructor(containerId){ 
+class ChessBoard { 
+    constructor(containerId) { 
         this.container = document.querySelector(containerId); 
         this.board = []
         this.createBoard();
@@ -30,7 +30,7 @@ class ChessBoard{
     }
 }
 
-class Knight{ 
+class Knight { 
     constructor() {
         this.moves = [
             [2 , 1], 
@@ -48,22 +48,41 @@ class Knight{
 
 
 
-function validLocation(x,y) { 
-    const boardLimit = 7; 
-    if((x >= 0 && x < boardLimit) && (y >= 0 && x < boardLimit)) { 
-        console.log(x)
-        console.log(y)
+function validLocation(position) { 
+    
+    const boardLimit = 8; 
+    const [x , y] = position
+
+    if((x >= 0 && x < boardLimit) && (y >= 0 && y < boardLimit)) { 
+        // console.log(x)
+        // console.log(y)
         return true
     } else { 
         console.error("Location is not valid");   
     }
 }
 
-const isValid = validLocation(11, 9);
-console.log(isValid);
+function shortestPath(currentPosition, destination) { 
+    // console.log(currentPosition)
+    // console.log(destination);
+    
+    if(!validLocation(currentPosition)) { 
+        return console.error("Please enter a valid current position");        
+    }
 
+    if(!validLocation(destination)) { 
+        return console.error("Please enter a valid destination position");
+    }
+
+    let fastPath = null;
+}
 
 //test area 
+// const testValid = validLocation([5, 5])
+
+// console.log(testValid);
+const shortPath = shortestPath([1 , 10] , [2 , 6])
+
 document.addEventListener("DOMContentLoaded" , () => {
     //     const testCB = new ChessBoard("#container"); 
     //     console.log(testCB);
