@@ -5,8 +5,7 @@ class ChessBoard {
         this.createBoard();
     }
     
-    createBoard() { 
-        
+    createBoard() {    
         for(let row = 0; row < 8; row++) { 
             //create row
             this.board[row] = [];
@@ -31,18 +30,16 @@ class ChessBoard {
 }
 
 class Knight { 
-    constructor() {
-        this.moves = [
-            [2 , 1], 
-            [1 , 2],
-            [2 , -1],
-            [1 , -2],
-            [-2 , 1],
-            [-1 , 2],
-            [-2 , -1],
-            [-1 , -2]
-        ]
-    }
+    static moves = [
+        [2 , 1], 
+        [1 , 2],
+        [2 , -1],
+        [1 , -2],
+        [-2 , 1],
+        [-1 , 2],
+        [-2 , -1],
+        [-1 , -2]
+    ]
 }
 
 
@@ -54,11 +51,9 @@ function validLocation(position) {
     const [x , y] = position
 
     if((x >= 0 && x < boardLimit) && (y >= 0 && y < boardLimit)) { 
-        // console.log(x)
-        // console.log(y)
         return true
     } else { 
-        console.error("Location is not valid");   
+        return false
     }
 }
 
@@ -68,11 +63,14 @@ function shortestPath(currentPosition, destination) {
 
     //checking if current position is valid 
     if(!validLocation(currentPosition)) { 
-        return console.error("Please enter a valid current position");        
+        console.error("Please enter a valid current position");
+        return null        
     }
     //checking if destination is valid 
     if(!validLocation(destination)) { 
-        return console.error("Please enter a valid destination position");
+        console.error("Please enter a valid destination position");
+        return null        
+
     }
 
     // creating path 
@@ -80,17 +78,17 @@ function shortestPath(currentPosition, destination) {
 
     const recurs = (current , path) => {
         // check if the current position matches destination 
-        if(current[0] === path[0] && current[1] === path[1]) { 
-            if(fastPath == null || path < fastPath.length) { //update Fastpath only if no prev path exists or path is shorter than fastPath
+        if(current[0] === destination[0] && current[1] === destination[1]) { 
+            if(fastPath == null || path.length < fastPath.length) { //update Fastpath only if no prev path exists or path is shorter than fastPath
                 fastPath = [...path];   // copies path array into fast path after each check 
             }
-            return
+            return;
         }
 
-        if(fastPath && path >= fastPath) return; // if shorter path has been found stop searching for shorter paths 
+        if(fastPath && path.length >= fastPath.length) return; // if shorter path has been found stop searching for shorter paths 
 
         // loop through possible knight moves 
-        for( const [dx, dy] of this.moves) { 
+        for(const [dx, dy] of Knight.moves) { 
             const nextPosition = [current[0] + dx , current[1] + dy]; 
             
             //if the move is possible and do not visit the same spot (some prevents cycles)
@@ -109,7 +107,8 @@ function shortestPath(currentPosition, destination) {
 // const testValid = validLocation([5, 5])
 
 // console.log(testValid);
-const shortPath = shortestPath([1 , 6] , [2 , 6])
+const shortPath = shortestPath([1 , 3] , [4 , 6])
+console.log(shortPath)
 
 document.addEventListener("DOMContentLoaded" , () => {
     //     const testCB = new ChessBoard("#container"); 
