@@ -45,9 +45,32 @@ class Knight{
     }
 }
 
-// document.addEventListener("DOMContentLoaded" , () => {
-//     const testCB = new ChessBoard("#container"); 
-//     console.log(testCB);
-// })
+
+
+
+function validLocation(x,y) { 
+    const boardLimit = 7; 
+    if((x >= 0 && x < boardLimit) && (y >= 0 && x < boardLimit)) { 
+        console.log(x)
+        console.log(y)
+        return true
+    } else { 
+        console.error("Location is not valid");   
+    }
+}
+
+const isValid = validLocation(11, 9);
+console.log(isValid);
+
+
+//test area 
+document.addEventListener("DOMContentLoaded" , () => {
+    //     const testCB = new ChessBoard("#container"); 
+    //     console.log(testCB);
+            // const testKnight = new Knight(); 
+            // console.log(testKnight)
+            
+    })
+
 
 // console.log("script is loading");
