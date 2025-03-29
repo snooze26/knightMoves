@@ -65,23 +65,51 @@ function validLocation(position) {
 function shortestPath(currentPosition, destination) { 
     // console.log(currentPosition)
     // console.log(destination);
-    
+
+    //checking if current position is valid 
     if(!validLocation(currentPosition)) { 
         return console.error("Please enter a valid current position");        
     }
-
+    //checking if destination is valid 
     if(!validLocation(destination)) { 
         return console.error("Please enter a valid destination position");
     }
 
-    let fastPath = null;
+    // creating path 
+    let fastPath = null
+
+    const recurs = (current , path) => {
+        // check if the current position matches destination 
+        if(current[0] === path[0] && current[1] === path[1]) { 
+            if(fastPath == null || path < fastPath.length) { //update Fastpath only if no prev path exists or path is shorter than fastPath
+                fastPath = [...path];   // copies path array into fast path after each check 
+            }
+            return
+        }
+
+        if(fastPath && path >= fastPath) return; // if shorter path has been found stop searching for shorter paths 
+
+        // loop through possible knight moves 
+        for( const [dx, dy] of this.moves) { 
+            const nextPosition = [current[0] + dx , current[1] + dy]; 
+            
+            //if the move is possible and do not visit the same spot (some prevents cycles)
+            if(validLocation(nextPosition) && !path.some(pos => pos[0] === nextPosition[0] && pos[1] === nextPosition[1])) {
+                path.push(nextPosition); // add the next position to the path
+                recurs(nextPosition, path); // explore further possible moves 
+                path.pop(); // removes nextPosition from path after each recursion 
+            }
+        }
+    }
+    recurs(currentPosition , [currentPosition]); // 
+    return fastPath; // return shortestPath 
 }
 
 //test area 
 // const testValid = validLocation([5, 5])
 
 // console.log(testValid);
-const shortPath = shortestPath([1 , 10] , [2 , 6])
+const shortPath = shortestPath([1 , 6] , [2 , 6])
 
 document.addEventListener("DOMContentLoaded" , () => {
     //     const testCB = new ChessBoard("#container"); 
