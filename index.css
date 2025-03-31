@@ -17,4 +17,11 @@
     background: #000000;
 }
 
+.visitedSpace{
+    background: #20f15f;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
 

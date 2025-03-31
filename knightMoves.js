@@ -103,12 +103,50 @@ function shortestPath(currentPosition, destination) {
     return fastPath; // return shortestPath 
 }
 
+
+//left on removing the css styling for when square is visited and adding new css stlying 
+function visitedSpace(path) { 
+    let spacesVisited = 0; 
+
+    path.forEach(space => {
+        const square = document.querySelector(`${space[0]} - ${space[1]}` )
+        square.textContent = `${spacesVisited}`;
+        square.classList.remove("darkSpace")
+        square.classList.add("visitedSpace")
+    });
+}
+
+function getCoords(input) { 
+    if(typeof input !== "string") {
+        console.error('Please enter valid coordinates: "x-x"');
+        const coords = input.split("-");
+        if(!coords == 2) {
+            console.error('Please use the valid format "x-x"');            
+        }       
+    }
+    
+    const firstNumber = parseInt(coords[0].trim(), 10);
+    const secondNumber = parseInt(coords[1].trim(), 10);
+
+    if(!Number.isInteger(firstNumber)) {
+        console.error("First input is not a valid number");
+    }
+
+    if(!typeof Number.isInteger(secondNumber !== 'integer')) {
+        console.error("Second input is not a valid number");
+    }
+
+    return [ firstNumber, secondNumber];
+
+}
+
+
 //test area 
 // const testValid = validLocation([5, 5])
 
 // console.log(testValid);
-const shortPath = shortestPath([1 , 3] , [4 , 6])
-console.log(shortPath)
+// const shortPath = shortestPath([1 , 3] , [4 , 3])
+// console.log(shortPath)
 
 document.addEventListener("DOMContentLoaded" , () => {
     //     const testCB = new ChessBoard("#container"); 
@@ -117,6 +155,8 @@ document.addEventListener("DOMContentLoaded" , () => {
             // console.log(testKnight)
             
     })
+
+
 
 
 // console.log("script is loading");
