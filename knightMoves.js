@@ -119,11 +119,12 @@ function visitedSpace(path) {
 function getCoords(input) { 
     if(typeof input !== "string") {
         console.error('Please enter valid coordinates: "x-x"');
-        const coords = input.split("-");
-        if(!coords == 2) {
-            console.error('Please use the valid format "x-x"');            
-        }       
     }
+
+    const coords = input.split("-");
+    if(!coords == 2) {
+        console.error('Please use the valid format "x-x"');            
+    }       
     
     const firstNumber = parseInt(coords[0].trim(), 10);
     const secondNumber = parseInt(coords[1].trim(), 10);
@@ -153,7 +154,8 @@ document.addEventListener("DOMContentLoaded" , () => {
     //     console.log(testCB);
             // const testKnight = new Knight(); 
             // console.log(testKnight)
-            
+      const coorddis = "4-4"; 
+      console.log(getCoords(coorddis));      
     })
 
 
