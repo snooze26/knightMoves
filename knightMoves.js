@@ -133,7 +133,7 @@ function getCoords(input) {
         console.error("First input is not a valid number");
     }
 
-    if(!typeof Number.isInteger(secondNumber !== 'integer')) {
+    if(!Number.isInteger(secondNumber)) {
         console.error("Second input is not a valid number");
     }
 
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded" , () => {
     //     console.log(testCB);
             // const testKnight = new Knight(); 
             // console.log(testKnight)
-      const coorddis = "4-4"; 
+      const coorddis = "l-f"; 
       console.log(getCoords(coorddis));      
     })
 
