@@ -22,9 +22,7 @@ create a createBoard function() {
 	assign id to the square 
 	append the square to chessboard
 	
-	store square in the board array 
-	 
-	
+	store square in the board array 	
 }
 
 create a knight class
@@ -54,18 +52,22 @@ create a function to find the shortestpath to get to the desire spot
 	create a fastPath variable 
 
 	create dfs var and assign it to the following function: constructors will be currentLo and path 
-		if the currentLo first element is equal to the wantedPosition's first element or currentLo 2nd element is equal to the wantedPosition's second element then
+		if the currentLo first element is equal to the wantedPosition's first element or currentLo 2nd element 
+		is equal to the wantedPosition's second element then
 	check if the fastPath is null or if the path is less than fastPath 
 		if true then copy path into the fastPath creating a new fastPath 
 
-	check if we already have a fastPath and if path is greater than or equal to bestpath. if so stop searching (return)
+	check if we already have a fastPath and if path is greater than or equal to fastPath. 
+	if so stop searching (return)
 
 try all moves possible 
  	for the degree x(dx) and y(dy) of the knights moves 
-		create nextPost an array that takes in the new current[0] + dx , current[1] + dy this assigning the new coordinates 
+		create nextPost an array that takes in the new current[0] + dx , current[1] + dy this 
+		assigning the new coordinates 
 
-		check if the next pos valid and !if path has the the same coordinates as next pos does if true 
-			add nextPos to the path 
+		check if the next pos valid and !if path has the the same coordinates 
+			as next pos does if true 
+				add nextPos to the path 
 			run the dfs function taking in the nextPos and path 
 			push out the last position from path 
 	
@@ -86,7 +88,7 @@ create a function that marks the squares that were visited
 }
 
 create a function to retrieve valid coordinates  
-getCoords(input) 
+getCoords(input) {
 
 check if the input is an integer if not throw a error 
 split the input using a delimiter "/" 
@@ -96,9 +98,10 @@ create variables for the x and y coordinate, convert those to numbers and trim w
 valid that both x and y are numbers if not throw a error 
 
 return x and y 
+}
 
 
-create an event listener manipulating the dom 
+create an event listener manipulating the dom {
 get chessboard
 get knight 
 get your starting coordinates prompting the screen
@@ -111,4 +114,4 @@ if the path is true then
 	call your visitedsqaure function the path 
 	
 else call a error 
-
+}
